@@ -44,6 +44,14 @@ img {
   --t3: #182226;
   --t4: #f2faf8;
   --t5: #e4eaea;
+  --rule: var(--fg);
+  --hero-glow: none;
+  --contact-bg: var(--accent);
+  --contact-fg: var(--on-accent);
+  --contact-field: var(--surface);
+  --contact-field-line: var(--on-accent);
+  --contact-btn: var(--on-accent);
+  --contact-btn-fg: var(--accent);
   --font-display: var(--next-archivo), "Arial Narrow", Arial, sans-serif;
   --font-body:
     var(--next-plex-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -52,44 +60,68 @@ img {
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #101719;
-    --surface: #172124;
-    --fg: #e4ebe9;
-    --muted: #93a4a3;
-    --line: #2a3739;
+    --bg: #0d1416;
+    --surface: #131d20;
+    --fg: #e6eeec;
+    --muted: #9bacaa;
+    --line: #243236;
+    --rule: #5d7276;
     --accent: #4dbfa8;
-    --on-accent: #08201b;
-    --s1: #4a463b;
-    --s2: #3d3a31;
-    --s3: #5a4736;
+    --on-accent: #06201b;
+    --s1: #5b5646;
+    --s2: #675d4b;
+    --s3: #7a5d3f;
     --s4: #4dbfa8;
-    --s5: #263235;
-    --t1: #e4ebe9;
-    --t2: #e4ebe9;
-    --t3: #e4ebe9;
-    --t4: #08201b;
-    --t5: #c9d6d4;
+    --s5: #2b3a3f;
+    --t1: #f4efe4;
+    --t2: #f4efe4;
+    --t3: #f4efe4;
+    --t4: #06201b;
+    --t5: #d3dfdd;
+    --hero-glow: radial-gradient(
+      ellipse 60% 70% at 78% 35%,
+      rgba(77, 191, 168, 0.1),
+      transparent 70%
+    );
+    --contact-bg: #0f3a34;
+    --contact-fg: #e8f5f2;
+    --contact-field: #092421;
+    --contact-field-line: #2f6b60;
+    --contact-btn: #4dbfa8;
+    --contact-btn-fg: #06201b;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #101719;
-  --surface: #172124;
-  --fg: #e4ebe9;
-  --muted: #93a4a3;
-  --line: #2a3739;
+  --bg: #0d1416;
+  --surface: #131d20;
+  --fg: #e6eeec;
+  --muted: #9bacaa;
+  --line: #243236;
+  --rule: #5d7276;
   --accent: #4dbfa8;
-  --on-accent: #08201b;
-  --s1: #4a463b;
-  --s2: #3d3a31;
-  --s3: #5a4736;
+  --on-accent: #06201b;
+  --s1: #5b5646;
+  --s2: #675d4b;
+  --s3: #7a5d3f;
   --s4: #4dbfa8;
-  --s5: #263235;
-  --t1: #e4ebe9;
-  --t2: #e4ebe9;
-  --t3: #e4ebe9;
-  --t4: #08201b;
-  --t5: #c9d6d4;
+  --s5: #2b3a3f;
+  --t1: #f4efe4;
+  --t2: #f4efe4;
+  --t3: #f4efe4;
+  --t4: #06201b;
+  --t5: #d3dfdd;
+  --hero-glow: radial-gradient(
+    ellipse 60% 70% at 78% 35%,
+    rgba(77, 191, 168, 0.1),
+    transparent 70%
+  );
+  --contact-bg: #0f3a34;
+  --contact-fg: #e8f5f2;
+  --contact-field: #092421;
+  --contact-field-line: #2f6b60;
+  --contact-btn: #4dbfa8;
+  --contact-btn-fg: #06201b;
   color-scheme: dark;
 }
 
@@ -216,7 +248,7 @@ p {
 .btn.ghost {
   background: transparent;
   color: var(--fg);
-  border-color: var(--fg);
+  border-color: var(--rule);
 }
 .btn:hover {
   filter: brightness(1.08);
@@ -224,6 +256,7 @@ p {
 
 /* Hero */
 .hero {
+  background: var(--hero-glow);
   padding-block: clamp(32px, 6vw, 72px);
 }
 .hero-grid {
@@ -311,7 +344,7 @@ p {
   gap: 0 36px;
 }
 .svc {
-  border-top: 1px solid var(--fg);
+  border-top: 1px solid var(--rule);
   padding-top: 16px;
   padding-bottom: 32px;
   display: grid;
@@ -411,11 +444,11 @@ p {
 
 /* Contact */
 .contact {
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--contact-bg);
+  color: var(--contact-fg);
 }
 .contact .mono {
-  color: var(--on-accent);
+  color: var(--contact-fg);
   opacity: 0.85;
 }
 .contact-layout {
@@ -448,16 +481,17 @@ p {
   min-width: 0;
 }
 .contact .btn {
-  background: var(--on-accent);
-  color: var(--accent);
-  border-color: var(--on-accent);
+  background: var(--contact-btn);
+  color: var(--contact-btn-fg);
+  border-color: var(--contact-btn);
 }
 .contact .btn.ghost {
   background: transparent;
-  color: var(--on-accent);
+  color: var(--contact-fg);
+  border-color: var(--contact-fg);
 }
 .contact :focus-visible {
-  outline-color: var(--on-accent);
+  outline-color: var(--contact-fg);
 }
 
 /* Contact form */
@@ -482,8 +516,8 @@ p {
   width: 100%;
   padding: 12px 14px;
   border-radius: 4px;
-  border: 1px solid var(--on-accent);
-  background: var(--surface);
+  border: 1px solid var(--contact-field-line);
+  background: var(--contact-field);
   color: var(--fg);
   font: 400 1rem/1.4 var(--font-body);
 }
@@ -503,9 +537,6 @@ p {
 }
 .form .btn {
   justify-self: start;
-  background: var(--on-accent);
-  color: var(--accent);
-  border-color: var(--on-accent);
 }
 .form .btn:disabled {
   opacity: 0.6;
@@ -515,7 +546,8 @@ p {
   display: grid;
   gap: 8px;
   padding: 24px;
-  border: 1px solid var(--on-accent);
+  border: 1px solid var(--contact-field-line);
+  background: var(--contact-field);
   border-radius: 4px;
 }
 .hp {
