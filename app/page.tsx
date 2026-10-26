@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 import { CopyEmail } from "@/components/CopyEmail";
 
@@ -74,6 +75,22 @@ const realities = [
   },
 ];
 
+// Replace the placeholder names and roles with the real team details.
+const team = [
+  {
+    name: "Tyrone",
+    role: "Consultant",
+    photo: "/team/team-1.jpg",
+    alt: "Portrait of a Mining Consultants team member",
+  },
+  {
+    name: "Greg",
+    role: "Consultant",
+    photo: "/team/team-2.jpg",
+    alt: "Portrait of a Mining Consultants team member",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -112,6 +129,9 @@ export default function Home() {
             </a>
             <a className="hide-sm" href="#sites">
               Site realities
+            </a>
+            <a className="hide-sm" href="#team">
+              Team
             </a>
             <a className="btn" href="#contact">
               Contact
@@ -264,6 +284,34 @@ export default function Home() {
                 </div>
               ))}
             </dl>
+          </div>
+        </section>
+
+        <section className="section band" id="team">
+          <div className="wrap diff">
+            <div className="section-head team-head" style={{ marginBottom: 0 }}>
+              <p className="mono">Our team</p>
+              <h2>Consultants you work with directly.</h2>
+              <p className="team-intro">
+                We are mining technology consultants. The people below are the
+                ones you talk to, on site and after we leave.
+              </p>
+            </div>
+            <ul className="team-grid">
+              {team.map((m, i) => (
+                <li className="member" key={i}>
+                  <Image
+                    src={m.photo}
+                    alt={m.alt}
+                    width={640}
+                    height={640}
+                    sizes="(max-width: 820px) 45vw, 260px"
+                  />
+                  <h3>{m.name}</h3>
+                  <p className="mono">{m.role}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
