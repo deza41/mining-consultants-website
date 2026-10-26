@@ -44,11 +44,11 @@ img {
   --t3: #182226;
   --t4: #f2faf8;
   --t5: #e4eaea;
-  --font-display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --font-display: var(--next-archivo), "Arial Narrow", Arial, sans-serif;
   --font-body:
-    "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    var(--next-plex-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono:
-    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    var(--next-plex-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -418,10 +418,21 @@ p {
   color: var(--on-accent);
   opacity: 0.85;
 }
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
 .contact-grid {
   display: grid;
   gap: 22px;
-  max-width: 40em;
+  min-width: 0;
+}
+@media (max-width: 820px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .email-row {
   display: flex;
@@ -447,6 +458,72 @@ p {
 }
 .contact :focus-visible {
   outline-color: var(--on-accent);
+}
+
+/* Contact form */
+.form {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+.field {
+  display: grid;
+  gap: 6px;
+}
+.field label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 4px;
+  border: 1px solid var(--on-accent);
+  background: var(--surface);
+  color: var(--fg);
+  font: 400 1rem/1.4 var(--font-body);
+}
+.field textarea {
+  resize: vertical;
+  min-height: 8em;
+}
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border-width: 2px;
+  border-style: dashed;
+}
+.field-err,
+.form-err {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.form .btn {
+  justify-self: start;
+  background: var(--on-accent);
+  color: var(--accent);
+  border-color: var(--on-accent);
+}
+.form .btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.form-done {
+  display: grid;
+  gap: 8px;
+  padding: 24px;
+  border: 1px solid var(--on-accent);
+  border-radius: 4px;
+}
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .foot {
