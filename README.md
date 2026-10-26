@@ -23,7 +23,7 @@ npm run dev
 | Variable         | Where            | Purpose                                         |
 | ---------------- | ---------------- | ----------------------------------------------- |
 | `POCKETBASE_URL` | Vercel + local   | PocketBase instance. Server-only, not `NEXT_PUBLIC_`. |
-| `SITE_URL`       | Vercel (optional) | Canonical origin for SEO tags, sitemap and share image. Defaults to the Vercel production domain. |
+| `SITE_URL`       | Vercel (optional) | Canonical origin for SEO tags, sitemap and share image. Defaults to `https://www.miningconsultants.com.au`. |
 
 The contact form writes to the `consult_form` collection (fields: `name`, `email`, `company`, `message`).
 The collection's **Create rule** must allow anonymous creates, since the server action does not authenticate.
