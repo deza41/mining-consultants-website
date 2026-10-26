@@ -1,6 +1,6 @@
 # Mining Consultants Website
 
-Simple website for a mining consultant IT company.
+Simple website for Mining Consultants.
 
 ## Structure
 
