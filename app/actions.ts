@@ -29,7 +29,7 @@ export async function submitContact(
   if (!values.name) errors.name = "Enter your name.";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))
     errors.email = "Enter a valid email address.";
-  if (!values.message) errors.message = "Tell us a little about the site.";
+  if (!values.message) errors.message = "Tell us a little bit about your project or question.";
   if (Object.keys(errors).length) {
     return { status: "error", errors, values };
   }
