@@ -1,8 +1,19 @@
 import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 import { CopyEmail } from "@/components/CopyEmail";
+import { SITE_DESCRIPTION, SITE_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
 
-const EMAIL = "info@miningconsultants.com.au";
+const EMAIL = SITE_EMAIL;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: SITE_NAME,
+  url: SITE_URL,
+  email: SITE_EMAIL,
+  description: SITE_DESCRIPTION,
+  areaServed: { "@type": "Country", name: "Australia" },
+};
 
 const services = [
   {
@@ -11,9 +22,9 @@ const services = [
     body: "Private LTE, point-to-point links, mesh coverage across the pit and Wi-Fi for the camp. We design for the dead spots, the haul road and the wet season.",
   },
   {
-    tag: "Security",
-    title: "OT and IT security",
-    body: "Separate the plant network from the office network, plan patching around shutdowns, and align controls to IEC 62443.",
+    tag: "IoT",
+    title: "IoT operations",
+    body: "Sensors, telemetry and connected equipment across the pit and the plant, set up and monitored so the data keeps flowing and the alerts mean something.",
   },
   {
     tag: "Data",
@@ -33,7 +44,7 @@ const services = [
   {
     tag: "Advisory",
     title: "Vendor and project assurance",
-    body: "Independent advice when you choose a fleet management, ERP or SCADA vendor, and a second pair of eyes during delivery.",
+    body: "Independent advice when you choose a fleet management or ERP vendor, and a second pair of eyes during delivery.",
   },
 ];
 
@@ -58,16 +69,16 @@ const steps = [
 
 const realities = [
   {
-    term: "Links drop.",
-    body: "Pits, shafts and ridgelines cut the signal, so systems have to keep working offline.",
+    term: "The signal is never guaranteed.",
+    body: "Pits, shafts and ridgelines block coverage, so systems have to keep working without a connection and catch up when it returns.",
   },
   {
     term: "Shutdowns set the calendar.",
     body: "Changes land in planned windows, never on a Tuesday afternoon in the middle of production.",
   },
   {
-    term: "Old and new share a site.",
-    body: "A 20-year-old controller sits beside a new telemetry stack, and both have to keep running.",
+    term: "Old and new equipment run side by side.",
+    body: "Machines that are 20 years old sit next to new sensors and software, and all of it has to keep working.",
   },
   {
     term: "Safety comes first.",
@@ -94,6 +105,12 @@ const team = [
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <header className="top">
         <div className="wrap">
           <a
@@ -291,10 +308,9 @@ export default function Home() {
           <div className="wrap diff">
             <div className="section-head team-head" style={{ marginBottom: 0 }}>
               <p className="mono">Our team</p>
-              <h2>Consultants you work with directly.</h2>
+              <h2>Meet the consultants behind the work.</h2>
               <p className="team-intro">
-                We are mining technology consultants. The people below are the
-                ones you talk to, on site and after we leave.
+                We are mining technology consultants. You deal with us directly, from the first site visit through to handover.
               </p>
             </div>
             <ul className="team-grid">
